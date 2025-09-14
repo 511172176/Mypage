@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ethan｜申請與學習計畫</title>
+  <meta name="description" content="Ethan 的申請網頁：個人簡介、申請動機、過往學習與作品、學習時間安排、技術選擇思考、情緒管理經驗、技術心得、AI 對軟體工程的影響、後續努力與其他想說的話。" />
+  <meta property="og:title" content="Ethan｜申請與學習計畫" />
+  <meta property="og:description" content="Ethan 的申請網頁：個人簡介、申請動機、過往學習與作品、學習時間安排、技術選擇思考、情緒管理經驗、技術心得、AI 對軟體工程的影響、後續努力與其他想說的話。" />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg: #0b1020; --panel:#0f152a; --ink:#e6ebff; --muted:#a9b1d6; --brand:#7c9cff;
+      --card:#121936; --accent:#c6ffdd; --accent2:#fbd786; --accent3:#f7797d;
+      --border: rgba(255,255,255,.08);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8ff; --panel:#ffffff; --ink:#1b2559; --muted:#51608e; --brand:#3b5bdb; --card:#ffffff; --border:rgba(0,20,80,.08) }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;scroll-behavior:smooth}
+    body{font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Helvetica Neue", Arial, "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif; color:var(--ink); background: radial-gradient(1000px 600px at 10% -10%, rgba(124,156,255,.15), transparent), radial-gradient(800px 500px at 90% 0%, rgba(199,255,221,.12), transparent), var(--bg)}
+    a{color:var(--brand); text-decoration:none}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:color-mix(in oklab, var(--bg) 70%, transparent); border-bottom:1px solid var(--border)}
+    .wrap{max-width:1100px; margin:auto; padding:0 20px}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .nav a{margin:0 10px; padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:var(--border)}
+    .brand{font-weight:800; letter-spacing:.2px}
+    .hero{display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center; padding:56px 0}
+    .hero h1{font-size: clamp(28px, 4vw, 46px); margin:0 0 12px}
+    .hero p{font-size: clamp(15px, 2vw, 18px); color:var(--muted)}
+    .badge{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3)); padding:8px 12px; border-radius:999px; color:#102; font-weight:700; letter-spacing:.3px}
+    .panel{background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 96%, transparent), color-mix(in oklab, var(--panel) 85%, transparent)); border:1px solid var(--border); border-radius:16px; padding:18px}
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:18px}
+    .col-12{grid-column: span 12}
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px}
+    .card h3{margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{padding-left:20px}
+    section{scroll-margin-top:80px}
+    footer{border-top:1px solid var(--border); margin-top:32px; padding:28px 0; color:var(--muted)}
+    button.toggle{border:1px solid var(--border); background:var(--panel); color:var(--ink); padding:8px 12px; border-radius:10px; cursor:pointer}
+    .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .tag{border:1px solid var(--border); padding:6px 10px; border-radius:999px; font-size:13px; color:var(--muted)}
+    .kbd{border:1px solid var(--border); padding:2px 6px; border-radius:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:12px}
+    .proj{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px}
+    .proj .card p{min-height:72px}
+    .q{font-weight:800; margin:0 0 6px}
+    .ans{margin:0; color:var(--muted); line-height:1.8}
+    .anchor{display:inline-block; margin-left:6px; opacity:.5}
+    /* 確保品牌與按鈕不換行 */
+    .brand{ white-space: nowrap; }
+    button.toggle{ white-space: nowrap; flex-shrink: 0; }
+    /* 讓導覽列保持單行，寬度不足時可水平捲動 */
+    .nav .navlinks{
+      display:flex;
+      align-items:center;
+      gap:6px;              /* 比原本更緊湊，避免早早換行 */
+      overflow-x:auto;      /* 需要時可左右捲動 */
+      scrollbar-width:none; /* Firefox 隱藏捲軸 */
+      flex:1;               /* 撐滿中間可用空間 */
+      padding:4px 0;
+    }
+    .nav .navlinks::-webkit-scrollbar{ display:none; } /* Chrome 隱藏捲軸 */
+    /* 覆蓋舊的 .nav a 規則，縮小 padding 與移除多餘 margin */
+    .nav .navlinks a{
+      margin:0;
+      padding:6px 10px;
+      border-radius:10px;
+    }
+    .nav .navlinks a:hover{
+      background:var(--border);
+    }
+    /* header 水平間距更穩定（可選，但建議） */
+    .nav{
+      gap:12px;
+      height:56px;      /* 比 64px 更緊湊 */
+      flex-wrap:nowrap; /* 禁止自動換行 */
+    }
+    @media (max-width:900px){ .hero{grid-template-columns: 1fr;} .col-6{grid-column: span 12} .col-4{grid-column: span 12} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Ethan · 申請頁</div>
+      <nav class="navlinks">
+        <a href="#about">介紹</a>
+        <a href="#works">作品</a>
+        <a href="#plan">學習安排</a>
+        <a href="#choices">技術選擇</a>
+        <a href="#emotion">情緒經驗</a>
+        <a href="#technote">技術心得</a>
+        <a href="#ai">AI 與工程師</a>
+        <a href="#progress">最新進展</a>
+        <a href="#other">其他</a>
+      </nav>
+      <button class="toggle" id="toggle">切換主題</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="badge">Hi! 我是 Ethan · 資工碩士生</div>
+        <h1>軟體工程 × 區塊鏈 × 機器學習<br/>把想法落地成可靠的產品</h1>
+        <p>目前就讀輔仁大學資工所。過去一年專注於兩條主線：<strong>區塊鏈資料壓縮 & ZK‑EIP‑7702 錢包原型</strong>，以及<strong>情緒辨識</strong>與<strong>網站安全風險分析</strong>等應用開發。期待加入訓練，透過系統化的專題與回饋，快速迭代職涯實戰力。</p>
+      </div>
+      <div class="panel">
+        <div class="grid">
+          <div class="col-6 card">
+            <h3>核心技能</h3>
+            <div class="tags">
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">React / Vue</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Python / TensorFlow</span>
+              <span class="tag">Solidity / Hardhat</span>
+              <span class="tag">Git / GitHub</span>
+            </div>
+          </div>
+          <div class="col-6 card">
+            <h3>近期重點</h3>
+            <ul class="list">
+              <li>區塊鏈交易資料壓縮率與確認時間實驗</li>
+              <li>ZK + EIP‑7702 驗證型錢包 MVP</li>
+              <li>FER2013 臉部表情辨識模型微調</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <h2>1）個人簡介與申請動機 <a class="anchor" href="#about">#</a></h2>
+      <p class="ans">我有後端與前端的跨域背景，近兩年投入區塊鏈安全、智能合約與機器學習應用。<br>
+      <strong>申請動機</strong>：希望在扎實的網站基礎（HTML/CSS/JS）上，整合既有專業，打造能上線、可維運、講得出效益的產品；也期待透過同儕與導師回饋，加速補齊版控、測試、部署與可維護性等工程化能力。</p>
+    </section>
+
+    <section id="works" class="card">
+      <h2>2）過往學習與作品分享 <a class="anchor" href="#works">#</a></h2>
+      <div class="proj">
+        <div class="card">
+          <h3>區塊鏈交易資料壓縮研究</h3>
+          <p>以 NEAR 為平台實作多種無損壓縮（Huffman, Zstd, LZ4…）對鏈上交易的壓縮率、壓縮/解壓時間與確認時間影響分析，並撰寫論文。</p>
+          <div class="tags"><span class="tag">Rust</span><span class="tag">Python</span><span class="tag">Zstd</span></div>
+        </div>
+        <div class="card">
+          <h3>ZK‑EIP‑7702 驗證型錢包</h3>
+          <p>整合零知識證明與 EIP‑7702 臨時驗證器概念，實作白名單 + 風險評分，降低釣魚交易風險；前端可直接呼叫合約 <code>execute</code>。</p>
+          <div class="tags"><span class="tag">Solidity</span><span class="tag">Hardhat</span><span class="tag">SNARK</span></div>
+        </div>
+        <div class="card">
+          <h3>情緒辨識系統</h3>
+          <p>以 ResNet50 + CBAM + Focal Loss 微調 FER2013，整合即時推論、警報與 Email 通知，支援陌生人偵測。</p>
+          <div class="tags"><span class="tag">TensorFlow</span><span class="tag">OpenCV</span></div>
+        </div>
+        <div class="card">
+          <h3>FJCU Token DApp</h3>
+          <p>React + Express + ethers.js 打造的 ERC‑20 餘額查詢 / 轉帳 / 交易紀錄 DApp，並整合 Slither 進行合約靜態分析。</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">ethers.js</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan" class="card">
+      <h2>3）若錄取，學習時間如何安排？ <a class="anchor" href="#plan">#</a></h2>
+      <ul class="list ans">
+        <li><strong>平日</strong>：每日 2–3 小時（1h 基礎&文件閱讀、1h 實作、0.5–1h 紀錄/反思）。</li>
+        <li><strong>週末</strong>：各 4 小時專題衝刺（功能切片→上線→回顧）。</li>
+        <li><strong>節奏</strong>：以「每週可 demo」為最小單位，持續整合（CI）與最小可行產品（MVP）。</li>
+        <li><strong>回饋</strong>：每週撰寫學習週誌與待辦分解，確保可追蹤與可交付。</li>
+      </ul>
+    </section>
+
+    <section id="choices" class="card">
+      <h2>4）技術日新月異，如何選擇投入領域？ <a class="anchor" href="#choices">#</a></h2>
+      <ol class="list ans">
+        <li><strong>以使用者價值為準</strong>：是否能替特定族群「省時、省錢、降風險」。</li>
+        <li><strong>以可遷移能力為本</strong>：資料結構、網路、系統與測試等通用底層。</li>
+        <li><strong>以小步快跑驗證</strong>：4 週內做出 MVP 上線收回饋，若無 traction 就轉向。</li>
+        <li><strong>以安全與合規思維</strong>：尤其區塊鏈/AI 產品，預先納入風險控管。</li>
+      </ol>
+    </section>
+
+    <section id="emotion" class="card">
+      <h2>5）一次負面情緒經驗與處理 <a class="anchor" href="#emotion">#</a></h2>
+      <p class="ans">在整合 ZK 驗證與合約時，曾因驗證失敗（AA23 reverted）反覆卡關，壓力與挫折感明顯。我的處理：<br>
+      ① 把問題拆成最小可重現情境（簡化合約與 proof）；② 檢查工具鏈版本、撰寫單元測試；③ 向社群與同儕請益，記錄排錯日誌；④ 安排運動與睡眠，避免情緒淹沒理性。最終定位錯誤來源後，建立 Debug Checklist，後續同類問題可快速排除。</p>
+    </section>
+
+    <section id="technote" class="card">
+      <h2>6）本頁開發的技術心得 <a class="anchor" href="#technote">#</a></h2>
+      <ul class="list ans">
+        <li>純 <strong>HTML + CSS + 少量 JS</strong> 完成單檔網站，方便部署到 GitHub Pages。</li>
+        <li>使用 <span class="kbd">scroll-margin-top</span> + sticky header 改善錨點體驗。</li>
+        <li>以 <span class="kbd">color-mix()</span> 與 <span class="kbd">oklab</span> 做柔和深淺主題；支援 <span class="kbd">prefers-color-scheme</span>。</li>
+        <li>版面採 12 欄格線與流體字級（<span class="kbd">clamp()</span>），在手機也易讀。</li>
+      </ul>
+    </section>
+
+    <section id="ai" class="card">
+      <h2>7）如何看待 AI 對軟體工程師的影響？ <a class="anchor" href="#ai">#</a></h2>
+      <p class="ans">AI 將持續拉高生產力基準：需求理解、架構設計、測試與維運仍需工程師負責。我的策略是把 AI 視為「<strong>自動化夥伴</strong>」，用於產生雛形、撰寫測試、重構與文件；同時強化對系統邏輯與風險的把關能力，避免「會跑但不可靠」的技術債。</p>
+    </section>
+
+    <section id="progress" class="card">
+      <h2>8）自上次申請以來的努力 <a class="anchor" href="#progress">#</a></h2>
+        <p class="ans">第一次申請。</p>
+    </section>
+
+    <section id="other" class="card">
+      <h2>9）其他想說的話 <a class="anchor" href="#other">#</a></h2>
+      <p class="ans">期待在訓練中與同儕共同衝刺，以可交付的里程碑為主，針對真實使用者問題持續迭代。我也樂於分享區塊鏈安全與機器學習實務，協助團隊在專案中落地。</p>
+    </section>
+
+    <section class="panel" style="margin-top:18px">
+      <div class="grid">
+        <div class="col-6">
+          <h3>快速導覽</h3>
+          <p class="muted">點擊跳轉到上方對應段落：</p>
+          <p>
+            <a href="#about">個人簡介</a> · <a href="#works">作品</a> · <a href="#plan">學習安排</a> · <a href="#choices">技術選擇</a> · <a href="#emotion">情緒經驗</a> · <a href="#technote">技術心得</a> · <a href="#ai">AI 影響</a> · <a href="#progress">進展</a> · <a href="#other">其他</a>
+          </p>
+        </div>
+        <div class="col-6">
+          <h3>聯絡</h3>
+          <p class="muted">Email：<a href="mailto:your.name@example.com">ae88888888@yahoo.com</a> ｜ GitHub：<a href="https://github.com/511172176" target="_blank" rel="noopener">@511172176</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Ethan — Built with HTML & CSS · Deploy on GitHub Pages</div>
+  </footer>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent = new Date().getFullYear()
+    // 主題切換：強制 light/dark（覆蓋 prefers-color-scheme）
+    const btn = document.getElementById('toggle')
+    let forced = false
+    btn.addEventListener('click', () => {
+      forced = !forced
+      document.documentElement.style.colorScheme = forced ? (getComputedStyle(document.documentElement).colorScheme === 'dark' ? 'light' : 'dark') : ''
+      btn.textContent = forced ? '依系統主題' : '切換主題'
+    })
+  </script>
+</body>
+</html>
